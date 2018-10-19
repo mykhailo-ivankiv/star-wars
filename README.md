@@ -2,7 +2,7 @@
 
 Hi there! This is the technical assignment from Factris.
 
-The task is for you to create an app thats will list all the people in the data provided with their home planet.
+The task is for you to create an app that will list all the people in the data provided with their home planet.
 
 For example when "Luke Skywalker" is called, the information should included information about Lukes home planet "Tatooine".
 
