@@ -6,13 +6,13 @@ The task is for you to create an app that's will list all the people in the data
 
 E.g. when "Luke Skywalker" is called, the information should included information about Lukes home planet "Tatooine".
 
-You should be able to filter people by their gender, spiecies and homeplanet. 
+You should be able to filter people by their gender, species and homeplanet. 
 
 The UI is up to you. we don't expect a complete product here but we would like to see some key features for when working on the assignment.  We are interested in your approach to the problem.
 
 We would like to see:
 - ReactJS best practices
-- Redux
+- Redux (or alternative)
 
 Nice to have:
 - unit testing
