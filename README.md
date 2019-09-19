@@ -2,13 +2,11 @@
 
 This is the technical assignment from Factris.
 
-The task is for you to create an app that's will list all the people in the data provided with their home planet.
+The task is for you to create an app that's shows a list of Star Wars characters (/people endpoint). When a character is selected it should show the details of the character and list the details of the related movies.
 
-E.g. when "Luke Skywalker" is called, the information should included information about Lukes home planet "Tatooine".
+You should be able to filter character by their gender, species and homeplanet. 
 
-You should be able to filter people by their gender, species and homeplanet. 
-
-The UI is up to you. we don't expect a complete product here but we would like to see some key features for when working on the assignment.  We are interested in your approach to the problem.
+How the UI looks is up to you. We do not expect a complete and polished product, but we would like to see clean and efficient code. We are mostly interested in how you approach  the assignment.
 
 We would like to see:
 - ReactJS best practices
@@ -19,13 +17,14 @@ Nice to have:
 
 ## Data
 
-We have some sample data from https://swapi.co/ the data is included inside the mock API client.
+We have some sample data from https://swapi.co/, the data is included inside the mock API client.
 
 The endpoint for retrieving the results are:
 
-/people - to retrieve a list of poeple
+/people - to retrieve a list of characters
 /planets - to retrieve a list of planets
 /species - to retrieve a list of species
+/films - to retrieve a list of movies
 
 Inside your code you can call one of the endpoints as follows:
 
