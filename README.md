@@ -21,10 +21,10 @@ We have some sample data from https://swapi.co/, the data is included inside the
 
 The endpoint for retrieving the results are:
 
-/people - to retrieve a list of characters
-/planets - to retrieve a list of planets
-/species - to retrieve a list of species
-/films - to retrieve a list of movies
+- /people : to retrieve a list of characters
+- /planets : to retrieve a list of planets
+- /species : to retrieve a list of species
+- /films : to retrieve a list of movies
 
 Inside your code you can call one of the mock endpoints as follows:
 
