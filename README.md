@@ -60,7 +60,7 @@ We would like to see:
 
 ## Data
 
-You can use the Star wars api endpoint https://swapi.dev/. You can use a library of your own choice to fetch the data.
+You should use the Star wars api endpoint https://swapi.dev/. You can use a library of your own choice to fetch the data.
 There's a mock client available in this repo that gives you the option to try out a few endpoints.
 
 If you have any question feel free to contact us.
