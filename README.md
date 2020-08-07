@@ -2,7 +2,7 @@
 
 Hi, this is the front end technical assignment of Factris. In this assignment we use an existing publicly available API. You can find the documentation here: https://swapi.dev/documentation. The endpoint can be found here: https://swapi.dev/api/
 
-The task for you is to update this application so that it shows a list of the Star Wars characters (`/people` endpoint). The list should have the following columns:
+The task for you is to update this application so that it shows a list of the Star Wars characters (`/people` endpoint). The list should have the following items:
 - Character name
 - Character birth year
 - Homeworld name (`/planet`)
