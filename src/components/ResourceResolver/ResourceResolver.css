@@ -1,0 +1,6 @@
+.ResourceResolver {}
+
+.ResourceResolver__textarea { width: 100%; height: 50em; font-size: 0.7rem;}
+.ResourceResolver__submit-button { }
+.ResourceResolver__result { margin: 2rem 0;}
+.ResourceResolver__result--loading { opacity: 0.5; font-size: 0.7rem;}

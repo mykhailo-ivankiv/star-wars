@@ -12,23 +12,9 @@ const peopleAdapter = (peopleResponse) =>
     })
   );
 
-const planetAdapter = (planetResponse) => {
-  const { name } = planetResponse.data;
-
-  return { name };
-};
-
-const filmAdapter = (planetResponse) => {
-  const { title } = planetResponse.data;
-
-  return { title };
-};
-
-const specieAdapter = (specieResponse) => {
-  const { name } = specieResponse.data;
-
-  return { name };
-};
+const planetAdapter = (planetResponse) => ({ name: planetResponse.data.name });
+const filmAdapter = (planetResponse) => ({ title: planetResponse.data.title });
+const specieAdapter = (specieResponse) => ({ name: specieResponse.data.name });
 
 export const starWarsAPI = async (rootEndpoint = "https://swapi.dev/api/") => {
   const { data: api } = await axios.get(rootEndpoint);
@@ -36,18 +22,10 @@ export const starWarsAPI = async (rootEndpoint = "https://swapi.dev/api/") => {
 
   return {
     people: memoizeWith(
-      (search) => toLower(search),
-      async (search) =>
-        peopleAdapter(await axios.get(`${people}?search=${search}`))
-    ),
-    planet: memoizeWith(identity, async (planetId) =>
-      planetAdapter(await axios.get(planetId))
-    ),
-    film: memoizeWith(identity, async (filmId) =>
-      filmAdapter(await axios.get(filmId))
-    ),
-    specie: memoizeWith(identity, async (specieId) =>
-      specieAdapter(await axios.get(specieId))
-    ),
+      (search= "") => toLower(search), async (search = "") => peopleAdapter(await axios.get(`${people}?search=${search}`))),
+
+    planet: memoizeWith(identity, async (planetId) => planetAdapter(await axios.get(planetId))),
+    film: memoizeWith(identity, async (filmId) => filmAdapter(await axios.get(filmId))),
+    specie: memoizeWith(identity, async (specieId) => specieAdapter(await axios.get(specieId))),
   };
 };
