@@ -1,4 +1,5 @@
 import axios from "axios";
+import { identity, memoizeWith, toLower } from "ramda";
 
 const peopleAdapter = (peopleResponse) =>
   peopleResponse.data.results.map(
@@ -34,9 +35,19 @@ export const starWarsAPI = async (rootEndpoint = "https://swapi.dev/api/") => {
   const { people } = api;
 
   return {
-    people: async () => peopleAdapter(await axios.get(people)),
-    planet: async (planetId) => planetAdapter(await axios.get(planetId)),
-    film: async (filmId) => filmAdapter(await axios.get(filmId)),
-    specie: async (specieId) => specieAdapter(await axios.get(specieId)),
+    people: memoizeWith(
+      (search) => toLower(search),
+      async (search) =>
+        peopleAdapter(await axios.get(`${people}?search=${search}`))
+    ),
+    planet: memoizeWith(identity, async (planetId) =>
+      planetAdapter(await axios.get(planetId))
+    ),
+    film: memoizeWith(identity, async (filmId) =>
+      filmAdapter(await axios.get(filmId))
+    ),
+    specie: memoizeWith(identity, async (specieId) =>
+      specieAdapter(await axios.get(specieId))
+    ),
   };
 };

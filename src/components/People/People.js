@@ -1,25 +1,46 @@
-import { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { ApiContext } from "../App/App.js";
-import { useAsync } from "react-use";
+import { useAsync, useDebounce } from "react-use";
 import Person from "../Person/Person.js";
+import {SearchHighlightContext} from "../SearchHighlight/SearchHighlight.js";
 
 const People = () => {
   const api = useContext(ApiContext);
+  const [search, setSearch] = useState("");
 
-  const { loading, value: people, error } = useAsync(() => api.people(), [api]);
+  const [debouncedSearch, setDebouncedSearch] = useState(search);
+  useDebounce(() => setDebouncedSearch(search), 400, [search]);
 
-  if (loading) return "loading";
-  if (loading) return "Error";
+  const people = useAsync(
+    () => api.people(debouncedSearch),
+    [api, debouncedSearch]
+  );
 
-  return people.map(({ name, birthYear, homeWorld, species, films }) => (
-    <Person
-      name={name}
-      birthYear={birthYear}
-      homeWorld={homeWorld}
-      species={species}
-      films={films}
-    />
-  ));
+  return (
+    <>
+      <input
+        type="text"
+        value={search}
+        onChange={({ target }) => setSearch(target.value)}
+      />
+      <div>
+        {people.loading && !people.value && "loading"}
+        {people.error && `Error: ${people.error.message}`}
+        {people.value?.map(({ name, birthYear, homeWorld, species, films }) => (
+          <SearchHighlightContext.Provider value={search}>
+            <Person
+              key={name}
+              name={name}
+              birthYear={birthYear}
+              homeWorld={homeWorld}
+              species={species}
+              films={films}
+            />
+          </SearchHighlightContext.Provider>
+        ))}
+      </div>
+    </>
+  );
 };
 
 export default People;

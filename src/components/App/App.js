@@ -1,9 +1,9 @@
 import React, { createContext } from "react";
 import { useAsync } from "react-use";
 import "./App.css";
-import BEM from "../../utils/ BEM.js";
+import BEM from "../../utils/BEM.js";
 import People from "../People/People.js";
-import { starWarsAPI } from "../../services/star-wars.js";
+import { starWarsAPI } from "../../services/starWars.js";
 
 const b = BEM("App");
 
